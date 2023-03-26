@@ -40,14 +40,14 @@ def get_weather(region):
     weather_url = "https://api.map.baidu.com/weather/v1/?district_id=350703&data_type=all&ak=uZA8XlUaw1xwUrBsRzxfjwjPBUwGFVHB"
     response = get(weather_url, headers=headers).json()
     # 获取地区的name
-    name = response["name"]
+    #name = response["name"]
     # 天气
     weather = response["now"]["text"]
     # 当前温度
     temp = response["now"]["temp"] + u"\N{DEGREE SIGN}" + "C"
     # 风向
     wind_dir = response["now"]["windDir"]
-    return name,weather,temp,wind_dir
+    return weather,temp,wind_dir
  
  
 def get_birthday(birthday, year, today):
@@ -210,7 +210,7 @@ if __name__ == "__main__":
     users = config["user"]
     # 传入地区获取天气信息
     region = config["region"]
-    name,weather, temp, wind_dir = get_weather(region)
+    weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
     if note_ch == "" and note_en == "":
