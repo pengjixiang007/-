@@ -40,13 +40,13 @@ def get_weather(region):
     weather_url = "https://api.map.baidu.com/weather/v1/?district_id=350703&data_type=all&ak=uZA8XlUaw1xwUrBsRzxfjwjPBUwGFVHB"
     response = get(weather_url, headers=headers).json()
     # 获取地区的name
-    #name = response["name"]
+    name = response["city"] + ["name"]
     # 天气
-    weather = response["now"]["text"]
+    weather = response["text"]
     # 当前温度
-    temp = response["now"]["temp"] + u"\N{DEGREE SIGN}" + "C"
+    temp = response["temp"] + u"\N{DEGREE SIGN}" + "C"
     # 风向
-    wind_dir = response["now"]["windDir"]
+    wind_dir = response["wind_dir"]
     return weather,temp,wind_dir
  
  
