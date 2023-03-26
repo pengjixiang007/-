@@ -49,7 +49,7 @@ def get_weather(region):
         sys.exit(1)
     else:
         # 获取地区的district_id
-    city = response["city"]["name"]
+        city = response["city"]["name"]
     weather_url = "https://api.map.baidu.com/weather/v1/?district_id={district_id}&data_type=all&ak={ak}".format(region, ak)
     response = get(weather_url, headers=headers).json()
     # 天气
