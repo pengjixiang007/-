@@ -48,9 +48,9 @@ def get_weather(region):
         os.system("pause")
         sys.exit(1)
     else:
-        # 获取地区的location--id
-        location_id = response["location"][0]["id"]
-    weather_url = "https://api.map.baidu.com/weather/v1/?district_id={district_id}&data_type={data_type}&ak={ak}".format(location_id, ak)
+        # 获取地区的district_id
+        district_id = response["district"][0]["id"]
+    weather_url = "https://api.map.baidu.com/weather/v1/?district_id={district_id}&data_type={data_type}&ak={ak}".format(district_id, ak)
     response = get(weather_url, headers=headers).json()
     # 天气
     weather = response["now"]["text"]
