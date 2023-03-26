@@ -37,19 +37,17 @@ def get_weather(region):
                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
     }
     ak = config["weather_key"]
-    region_url = "https://api.map.baidu.com/weather/v1/?district_id=350703&data_type=all&ak=uZA8XlUaw1xwUrBsRzxfjwjPBUwGFVHB"
-    response = get(region_url, headers=headers).json()
-    # 获取地区的district_id
-    city = response["city"]["name"]
     weather_url = "https://api.map.baidu.com/weather/v1/?district_id=350703&data_type=all&ak=uZA8XlUaw1xwUrBsRzxfjwjPBUwGFVHB"
     response = get(weather_url, headers=headers).json()
+    # 获取地区的name
+    name = response["name"]
     # 天气
     weather = response["now"]["text"]
     # 当前温度
     temp = response["now"]["temp"] + u"\N{DEGREE SIGN}" + "C"
     # 风向
     wind_dir = response["now"]["windDir"]
-    return city,name,weather,temp,wind_dir
+    return name,weather,temp,wind_dir
  
  
 def get_birthday(birthday, year, today):
@@ -212,7 +210,7 @@ if __name__ == "__main__":
     users = config["user"]
     # 传入地区获取天气信息
     region = config["region"]
-    city,weather, temp, wind_dir = get_weather(region)
+    name,weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
     if note_ch == "" and note_en == "":
