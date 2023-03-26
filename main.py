@@ -32,6 +32,7 @@ def get_access_token():
  
  
 def get_weather(region):
+    global name
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
@@ -40,9 +41,9 @@ def get_weather(region):
     weather_url = "https://api.map.baidu.com/weather/v1/?district_id=350703&data_type=all&ak=uZA8XlUaw1xwUrBsRzxfjwjPBUwGFVHB"
     response = get(weather_url, headers=headers).json()
     # 获取地区的name
-    name = response[name]
+    name = response['name']
     # 天气
-    #weather = response[][text]
+    #weather = response[now][text]
     # 当前温度
     #temp = response['retData']['temp'] + u"\N{DEGREE SIGN}" + "C"
     # 风向
